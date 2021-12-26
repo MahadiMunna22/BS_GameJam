@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.EventSystems;
 
 namespace UnityStandardAssets.Characters.FirstPerson
 {
@@ -265,6 +266,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void RotateView()
         {
+
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                return;
+            }
             //avoids the mouse looking if the game is effectively paused
             if (Mathf.Abs(Time.timeScale) < float.Epsilon) return;
 

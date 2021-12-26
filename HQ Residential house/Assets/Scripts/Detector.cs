@@ -37,8 +37,8 @@ public class Detector : MonoBehaviour
                   
                    Inventory.Instance.Additems(interceptedObj); 
                    interceptedObj.SetActive(false);
-                   //Debug.Log(Inventory.Instance.items[0].GetComponent<ItemsAttributes>().weight);
-                        
+                    //Debug.Log(Inventory.Instance.items[0].GetComponent<ItemsAttributes>().weight);
+                    Cursor.visible = true;
 
                 }
 

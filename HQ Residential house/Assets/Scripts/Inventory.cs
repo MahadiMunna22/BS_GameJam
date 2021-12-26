@@ -6,6 +6,10 @@ public class Inventory : MonoBehaviour
 {
     public static Inventory Instance;
 
+    public delegate void OnItemChanged();
+    public OnItemChanged OnItemChangedCallback;
+
+
     float maxWeight = 50f;
     float totalWeight = 0f;
     float totalValue = 0f;
@@ -14,22 +18,13 @@ public class Inventory : MonoBehaviour
 
       
         Instance = this;
-     
+       
+
     }
 
     public List<GameObject> items;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 
     public void Additems(GameObject item)
     {
@@ -39,6 +34,10 @@ public class Inventory : MonoBehaviour
             items.Add(item);
             totalWeight += item.GetComponent<ItemsAttributes>().weight;
             totalValue += item.GetComponent<ItemsAttributes>().value;
+            if (OnItemChangedCallback != null)
+            { 
+                OnItemChangedCallback.Invoke(); 
+            }
         }
         else
         {
@@ -48,6 +47,13 @@ public class Inventory : MonoBehaviour
 
     public void Removeitems(GameObject item)
     {
+       
 
+        items.Remove(item);
+
+        if (OnItemChangedCallback != null)
+        {
+            OnItemChangedCallback.Invoke();
+        }
     }
 }
