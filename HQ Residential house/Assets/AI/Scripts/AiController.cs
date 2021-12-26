@@ -18,8 +18,11 @@ public class AiController : MonoBehaviour
     private Animator anim;
     public int movePlace;
     public bool isEnable = true;
-    public int x;
-
+    public GameObject eyes;
+    public GameObject eyes1;
+    public GameObject eyes2;
+    public bool found;
+    public float time = 0;
     // Start is called before the first frame update
     private void Start()
     {
@@ -32,9 +35,83 @@ public class AiController : MonoBehaviour
     }
   
 
+
+    void Search(GameObject eyes)
+    {
+        RaycastHit hit;
+        Ray landingRay = new Ray(eyes.transform.position, eyes.transform.TransformDirection(Vector3.forward) * 10);
+        Debug.DrawRay(eyes.transform.position, eyes.transform.TransformDirection(Vector3.forward) * 2, Color.red);
+        if (Physics.Raycast(landingRay, out hit, 4))
+        {
+            Debug.Log("asd");
+
+            if (hit.collider.tag == "Player")
+            {
+                //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 10,Color.red);
+                //Debug.Log("asd1");
+
+                //Interact.SetActive(true);
+
+                //Debug.Log("Thief");
+                isEnable = false;
+                found = true;
+                time += Time.deltaTime;
+
+
+            }
+
+        }
+
+
+
+    }
+
     // Update is called once per frame
     void Update()
-    { 
+    {
+
+
+        if(time > 2.5)
+        {
+            Debug.Log("Game over");
+        }
+
+        //Debug.Log(time);
+
+
+        Search(eyes);
+        Search(eyes1);
+        Search(eyes2);
+
+        if(found == true)
+        {
+           
+            nav.SetDestination(transform.position);
+            StartCoroutine(MoveAIagain());
+            
+            found = false;
+        }
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //Jaber
         anim.SetFloat("velocity", nav.velocity.magnitude);
 
        
@@ -81,6 +158,14 @@ public class AiController : MonoBehaviour
     {
         yield return new WaitForSeconds(Random.Range(20,30));
         isEnable = true;
+    }
+
+    IEnumerator MoveAIagain()
+    {
+        yield return new WaitForSeconds(Random.Range(5,8));
+        isEnable = true;
+        
+        time = 0;
     }
 
     private void Idle()
