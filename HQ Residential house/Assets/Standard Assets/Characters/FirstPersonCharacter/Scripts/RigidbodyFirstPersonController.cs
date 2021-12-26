@@ -11,6 +11,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
     [RequireComponent(typeof (CapsuleCollider))]
     public class RigidbodyFirstPersonController : MonoBehaviour
     {
+       
+
         [Serializable]
         public class MovementSettings
         {
@@ -136,7 +138,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void Update()
         {
-            RotateView();
+           /* if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                mouseLook.lockCursor = !mouseLook.lockCursor;
+            }
+*/
+                RotateView();
 
             if (CrossPlatformInputManager.GetButtonDown("Jump") && !m_Jump)
             {

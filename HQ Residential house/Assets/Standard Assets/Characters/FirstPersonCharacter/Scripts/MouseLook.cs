@@ -7,6 +7,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
     [Serializable]
     public class MouseLook
     {
+
+      /*  public static MouseLook instance;
+
+        private void Awake()
+        {
+            instance = this;
+        }*/
         public float XSensitivity = 2f;
         public float YSensitivity = 2f;
         public bool clampVerticalRotation = true;

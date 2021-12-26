@@ -29,10 +29,12 @@ public class InventoryUi : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.I))
+        if(Input.GetKeyDown(KeyCode.Escape))
         {
             state = !state;
             bag.SetActive(state);
+
+            
             //player.GetComponent<Rig>();
             //mLook.lockCursor = !mLook.lockCursor;
             //UpdateUI();
