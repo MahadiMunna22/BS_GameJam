@@ -55,7 +55,7 @@ public class AiController : MonoBehaviour
             Idle();
             Debug.Log("Idle AI");
         }
-        if(nav.speed >= 0)
+        if(nav.speed > 0)
         {
             Walk();
             Debug.Log("Walking AI");
@@ -89,7 +89,6 @@ public class AiController : MonoBehaviour
     }
     private void Walk()
     {
-
         anim.SetFloat("velocity", 1.0f, 0.1f, Time.deltaTime);
     }
 }
