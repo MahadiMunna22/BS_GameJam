@@ -22,6 +22,7 @@ public class Detector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Interact == null) return;
         RaycastHit hit;
         Ray landingRay = new Ray(transform.position, transform.TransformDirection(Vector3.forward) * 10);
         Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 10, Color.red);

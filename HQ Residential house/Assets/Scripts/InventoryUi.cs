@@ -14,8 +14,11 @@ public class InventoryUi : MonoBehaviour
 
     public GameObject bag;
     public GameObject player;
+    public GameObject pauseMenu;
+
 
     bool state;
+    bool pauseState;
     bool cursorVisible;
     // Start is called before the first frame update
     void Start()
@@ -30,7 +33,7 @@ public class InventoryUi : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.I))
         {
             state = !state;
             bag.SetActive(state);
@@ -40,7 +43,15 @@ public class InventoryUi : MonoBehaviour
             //mLook.lockCursor = !mLook.lockCursor;
             //UpdateUI();
         }
-        if (cursorVisible) { 
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            pauseState = !pauseState;
+            if(pauseState)
+                pauseMenu.SetActive(true);
+            else
+                pauseMenu.SetActive(false);
+        }
+            if (cursorVisible) { 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         }

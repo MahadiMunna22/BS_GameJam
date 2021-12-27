@@ -138,12 +138,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void Update()
         {
-           /* if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                mouseLook.lockCursor = !mouseLook.lockCursor;
-            }
-*/
-                RotateView();
+            //if (Input.GetKeyDown(KeyCode.Escape))
+            //{
+            //    Time.timeScale = 0.0f;
+            //}
+
+            RotateView();
 
             if (CrossPlatformInputManager.GetButtonDown("Jump") && !m_Jump)
             {
