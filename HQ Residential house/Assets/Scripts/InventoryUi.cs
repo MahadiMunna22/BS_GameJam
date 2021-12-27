@@ -16,6 +16,7 @@ public class InventoryUi : MonoBehaviour
     public GameObject player;
 
     bool state;
+    bool cursorVisible;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,11 +34,15 @@ public class InventoryUi : MonoBehaviour
         {
             state = !state;
             bag.SetActive(state);
+            cursorVisible = !cursorVisible;
 
-            
             //player.GetComponent<Rig>();
             //mLook.lockCursor = !mLook.lockCursor;
             //UpdateUI();
+        }
+        if (cursorVisible) { 
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         }
     }
 
