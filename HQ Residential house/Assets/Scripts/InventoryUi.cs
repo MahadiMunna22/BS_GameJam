@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 //using  UnityStandardAssets.Characters.FirstPerson;
 
 public class InventoryUi : MonoBehaviour
@@ -15,6 +16,7 @@ public class InventoryUi : MonoBehaviour
     public GameObject bag;
     public GameObject player;
     public GameObject pauseMenu;
+    public GameObject exitPause;
 
 
     bool state;
@@ -62,6 +64,12 @@ public class InventoryUi : MonoBehaviour
         }
     }
 
+    public void pauseExit()
+    {
+        pauseMenu.SetActive(false);
+        cursorVisiblePause = false;
+        pauseState = false;
+    }
     void UpdateUI()
     {
         Debug.Log("Update UI");
