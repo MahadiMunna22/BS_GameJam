@@ -30,11 +30,22 @@ public class AiSensor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+      
         scanTimer -= Time.deltaTime;
         if(scanTimer<0)
         {
             scanTimer += scanInterval;
             Scan();
+        }
+
+        for (int i = 0; i < count; ++i)
+        {
+
+            //Unity.RuntimeGizmos.RuntimeGizmoDrawer.DrawSphere(colliders[i].transform.position, 0.2f);
+
+
+
+            //DrawSphere(colliders[i].transform.position, 0.2f);
         }
     }
 
