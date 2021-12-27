@@ -32,14 +32,16 @@ public class Detector : MonoBehaviour
 
             if (hit.collider.tag == "Pickable")
             {
-                 
 
+              
                 Interact.SetActive(true);
-                if(Input.GetKeyDown(KeyCode.Q))
+                interceptedObj = hit.transform.gameObject;
+                interceptedObj.GetComponent<Outline>().enabled = true;
+
+                if (Input.GetKeyDown(KeyCode.Q))
                 {
                      
-                   interceptedObj = hit.transform.gameObject;
-                  
+                
                    Inventory.Instance.Additems(interceptedObj); 
                    interceptedObj.SetActive(false);
                  //Debug.Log(Inventory.Instance.items[0].GetComponent<ItemsAttributes>().weight);
