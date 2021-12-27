@@ -20,6 +20,7 @@ public class InventoryUi : MonoBehaviour
     bool state;
     bool pauseState;
     bool cursorVisible;
+    bool cursorVisiblePause;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,13 +46,17 @@ public class InventoryUi : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            cursorVisiblePause = !cursorVisiblePause;
             pauseState = !pauseState;
             if(pauseState)
                 pauseMenu.SetActive(true);
             else
                 pauseMenu.SetActive(false);
         }
-            if (cursorVisible) { 
+
+
+
+            if (cursorVisible || cursorVisiblePause) { 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         }
