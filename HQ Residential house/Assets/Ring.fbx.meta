@@ -3,7 +3,22 @@ guid: 304ca4f9e5eaf7548a102959be0d824b
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Band
+    second: {fileID: 2100000, guid: 0b308ea25b3d05848a7ba1de34b8033b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: front
+    second: {fileID: 2100000, guid: 01c58b6fb1e587749ba8571b9d149810, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: stone
+    second: {fileID: 2100000, guid: 643f78187d155b94d8de205335561b4a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
