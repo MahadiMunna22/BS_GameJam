@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Detector : MonoBehaviour
 {
    
     [SerializeField] GameObject Interact;
+    public GameObject panel; 
+    public List<GameObject> dialogues;
+    public List<string> dialogues1;
 
+    int index = 0;
     GameObject interceptedObj;
     // Start is called before the first frame update
     void Start()
@@ -26,19 +31,18 @@ public class Detector : MonoBehaviour
 
             if (hit.collider.tag == "Pickable")
             {
-                //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 10,Color.red);
-                Debug.Log("asd1");
+                 
 
                 Interact.SetActive(true);
                 if(Input.GetKeyDown(KeyCode.Q))
                 {
-                    //Debug.Log(hit.transform.gameObject.name);
+                     
                    interceptedObj = hit.transform.gameObject;
                   
                    Inventory.Instance.Additems(interceptedObj); 
                    interceptedObj.SetActive(false);
                     //Debug.Log(Inventory.Instance.items[0].GetComponent<ItemsAttributes>().weight);
-                    Cursor.visible = true;
+                   
 
                 }
 
@@ -46,14 +50,52 @@ public class Detector : MonoBehaviour
 
             }
 
+            else if (hit.collider.tag == "PoorGuy")
+            {
+                 
+
+                Interact.SetActive(true);
+                if (Input.GetKeyDown(KeyCode.Q))
+                {
+                   
+                    panel.SetActive(true);
+                    dialogues[index].SetActive(true);
+                    
+
+                    if(Inventory.Instance.totalValue>0)
+                    {
+                        dialogues[0].SetActive(false);
+                        index = 1;
+                        dialogues[index].SetActive(true);
+                    }
+                 /*   panel.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text=dialogues1[0];
+
+                    if (Input.GetKeyDown(KeyCode.R))
+                    {
+                        panel.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = dialogues1[1];
+                    } 
+
+                    if (Input.GetKeyDown(KeyCode.G))
+                    {
+                        panel.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = dialogues1[2];
+                    }*/
+                }
+
+                
+
+
+            }
+
             else
             {
+                dialogues[index].SetActive(false);
+                panel.SetActive(false);
                 Interact.SetActive(false);
             }
         }
-        else
-        {
-            //Interact.SetActive(false);
-        }
+        
     }
+
+
+     
 }

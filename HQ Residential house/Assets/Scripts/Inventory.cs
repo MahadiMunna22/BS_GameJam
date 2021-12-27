@@ -12,7 +12,7 @@ public class Inventory : MonoBehaviour
 
     float maxWeight = 50f;
     float totalWeight = 0f;
-    float totalValue = 0f;
+    public float totalValue = 0f;
     private void Awake()
     {
 
