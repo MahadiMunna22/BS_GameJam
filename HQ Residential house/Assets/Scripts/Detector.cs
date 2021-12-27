@@ -5,7 +5,7 @@ using UnityEngine;
 public class Detector : MonoBehaviour
 {
    
-  //  [SerializeField] GameObject Interact;
+    [SerializeField] GameObject Interact;
 
     GameObject interceptedObj;
     // Start is called before the first frame update
@@ -27,19 +27,34 @@ public class Detector : MonoBehaviour
             if (hit.collider.tag == "Pickable")
             {
                 //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 10,Color.red);
-                Debug.Log("asd1");
 
+                Interact.SetActive(true);
                 //Interact.SetActive(true);
-                if(Input.GetKeyDown(KeyCode.F))
+                if(Input.GetKeyDown(KeyCode.Q))
                 {
+                    Interact.SetActive(false);
                     //Debug.Log(hit.transform.gameObject.name);
-                   interceptedObj = hit.transform.gameObject;
+                    interceptedObj = hit.transform.gameObject;
                   
                    Inventory.Instance.Additems(interceptedObj); 
                    interceptedObj.SetActive(false);
                     //Debug.Log(Inventory.Instance.items[0].GetComponent<ItemsAttributes>().weight);
-                    Cursor.visible = true;
+                
 
+                }
+
+            }
+            
+            
+            else if (hit.collider.tag == "PoorGuy")
+            {
+                Interact.SetActive(true);
+                
+
+                if (Input.GetKeyDown(KeyCode.Q))
+                {
+
+                    Interact.SetActive(false);
                 }
 
             }
