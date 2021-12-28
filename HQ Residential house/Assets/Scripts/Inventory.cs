@@ -22,6 +22,7 @@ public class Inventory : MonoBehaviour
     public GameObject targetText; 
     public bool isPaused = false;
     public bool isGameOver = false;
+    public bool moveEnabled;
 
     private void Awake()
     {

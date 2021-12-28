@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+ 
+
+ 
 
 public class DialogManager : MonoBehaviour
 {
@@ -17,6 +20,11 @@ public class DialogManager : MonoBehaviour
     private int endDialogNum = 0;
     public bool stealingDone;
     public GameObject dialogPanel;
+    public GameObject initaialBorder;
+    
+    
+
+    
 
     private void Start()
     {
@@ -27,8 +35,9 @@ public class DialogManager : MonoBehaviour
             text.text = endDialogs[endDialogNum];
         }
         else
-        {
+        {   
             text.text = dialogs[dialogNum];
+         
         }
 
         Button btn = LoadNext.GetComponent<Button>();
@@ -66,6 +75,7 @@ public class DialogManager : MonoBehaviour
             }
             else
             {
+                initaialBorder.SetActive(false);    
                 dialogPanel.SetActive(false);
                 dialogNum = 0;
             }

@@ -11,7 +11,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
     [RequireComponent(typeof (CapsuleCollider))]
     public class RigidbodyFirstPersonController : MonoBehaviour
     {
-       
+        public static float customSpeed =10;
 
         [Serializable]
         public class MovementSettings
@@ -48,7 +48,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
 					//forwards
 					//handled last as if strafing and moving forward at the same time forwards speed should take precedence
 					CurrentTargetSpeed = ForwardSpeed;
-				}
+                    ForwardSpeed =  customSpeed;
+
+                }
 #if !MOBILE_INPUT
 	            if (Input.GetKey(RunKey))
 	            {
@@ -142,6 +144,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             //{
             //    Time.timeScale = 0.0f;
             //}
+
+            
 
             RotateView();
 
