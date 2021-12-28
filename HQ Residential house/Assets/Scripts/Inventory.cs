@@ -19,7 +19,10 @@ public class Inventory : MonoBehaviour
      
     public TMPro.TextMeshProUGUI valueText;
     public TMPro.TextMeshProUGUI weightText;
-    public GameObject targetText;
+    public GameObject targetText; 
+    public bool isPaused = false;
+    public bool isGameOver = false;
+
     private void Awake()
     {
 

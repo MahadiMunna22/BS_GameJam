@@ -61,9 +61,9 @@ public class InventoryUi : MonoBehaviour
 
 
 
-            if (cursorVisible || cursorVisiblePause) { 
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        if (cursorVisible || cursorVisiblePause || Inventory.Instance.isGameOver) { 
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
 

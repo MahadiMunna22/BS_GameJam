@@ -20,6 +20,8 @@ public class AiSensor : MonoBehaviour
     int count;
     float scanInterval;
     float scanTimer;
+    public bool isGameover = false;
+    public GameObject camera;
 
     // Start is called before the first frame update
     void Start()
@@ -87,9 +89,10 @@ public class AiSensor : MonoBehaviour
         if(Physics.Linecast(origin,dest,occlusionLayers))
         {
             return false;
-        }    
+        }
 
         Debug.Log("Game over is");
+        Inventory.Instance.isGameOver = true;
 
         return true;
     }

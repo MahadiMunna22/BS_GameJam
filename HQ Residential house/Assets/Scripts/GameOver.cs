@@ -9,5 +9,7 @@ public class GameOver : MonoBehaviour
     {
         Debug.Log("Back to main menu");
         SceneManager.LoadScene(0);
+        Inventory.Instance.isGameOver = false;
+        Inventory.Instance.isPaused = false;
     }
 }

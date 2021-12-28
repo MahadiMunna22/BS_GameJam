@@ -28,26 +28,25 @@ public class AiController : MonoBehaviour
         anim = GetComponent<Animator>();
         nav.speed = 1.0f;
         anim.speed = 1.0f;
-        
     }
   
 
     // Update is called once per frame
     void Update()
-    { 
+    {
+        
         anim.SetFloat("velocity", nav.velocity.magnitude);
 
-       
         if (isEnable)
         {
-           
+
             movePlace = Random.Range(0, 3);
             nav.SetDestination(positions[movePlace].transform.position);
             isEnable = false;
             StartCoroutine(MoveAI());
 
         }
-         
+
 
 
         if (nav.speed == 0)
@@ -55,7 +54,7 @@ public class AiController : MonoBehaviour
             Idle();
             Debug.Log("Idle AI");
         }
-        if(nav.speed > 0)
+        if (nav.speed > 0)
         {
             Walk();
             Debug.Log("Walking AI");
@@ -67,7 +66,9 @@ public class AiController : MonoBehaviour
         {
             StartCoroutine(MoveAI());
         }*/
-       
+        
+
+
 
     }
 
