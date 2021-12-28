@@ -8,17 +8,16 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject menu;
     public void PlayGame(){
-<<<<<<< Updated upstream
-        /* SceneManager.LoadScene(1);*/
          Cursor.lockState = CursorLockMode.Locked;
          Cursor.visible = false;
          menu.SetActive(false);
-        
-}
-=======
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
->>>>>>> Stashed changes
+
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
 
     public void QuitGame(){
         Application.Quit();

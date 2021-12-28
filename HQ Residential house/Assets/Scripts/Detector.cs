@@ -12,8 +12,6 @@ public class Detector : MonoBehaviour
     public GameObject gameOverScreen;
 
     public GameObject panel; 
-    public List<GameObject> dialogues;
-    public List<string> dialogues1;
     public LayerMask occlusionLayers;
 
 
@@ -111,14 +109,11 @@ public class Detector : MonoBehaviour
                 {
                     Inventory.Instance.setTarget();
                     panel.SetActive(true);
-                    dialogues[0].SetActive(true);
 
 
                     if (Inventory.Instance.totalValue >= 2000)
                     {
-                        dialogues[0].SetActive(false);
-                        index = 1;
-                        dialogues[index].SetActive(true);
+                        panel.GetComponent<DialogManager>().stealingDone = true;
                     }
 
                 }
@@ -131,7 +126,6 @@ public class Detector : MonoBehaviour
             else
             {
                 Debug.Log("not disappearing");
-                dialogues[0].SetActive(false);
                 panel.SetActive(false);
                 Interacthuman.SetActive(false);
             }
@@ -139,7 +133,7 @@ public class Detector : MonoBehaviour
 
     }
         
-       void takeobject()
+    void takeobject()
     {
 
     }

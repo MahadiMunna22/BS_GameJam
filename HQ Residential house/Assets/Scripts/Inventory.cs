@@ -48,8 +48,8 @@ public class Inventory : MonoBehaviour
             totalWeight += item.GetComponent<ItemsAttributes>().weight;
             totalValue += item.GetComponent<ItemsAttributes>().value;
 
-            weightText.text = "Total weight : " + totalWeight + " Kg";
-            valueText.text = "Total value : " + totalValue + " $";
+            weightText.text = totalWeight + " Kg";
+            valueText.text = totalValue + " $";
             Debug.Log(totalWeight);
             if (OnItemChangedCallback != null)
             { 
@@ -90,8 +90,8 @@ public class Inventory : MonoBehaviour
         totalValue -= item.GetComponent<ItemsAttributes>().value;
         items.Remove(item);
 
-        weightText.text = "Total weight : " + totalWeight + " Kg";
-        valueText.text = "Total value : " + totalValue + " $";
+        weightText.text = totalWeight + " Kg";
+        valueText.text = totalValue + " $";
 
         if (OnItemChangedCallback != null)
         {

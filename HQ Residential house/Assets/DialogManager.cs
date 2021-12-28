@@ -44,6 +44,7 @@ public class DialogManager : MonoBehaviour
     {
         if (stealingDone)
         {
+            Debug.Log("Stealing Done");
             if (endDialogNum < endDialogs.Length - 1)
             {
                 endDialogNum += 1;
@@ -52,10 +53,12 @@ public class DialogManager : MonoBehaviour
             else
             {
                 dialogPanel.SetActive(false);
+                endDialogNum = 0;
             }
         }
         else
         {
+            Debug.Log("Stealing Not Done");
             if (dialogNum < dialogs.Length - 1)
             {
                 dialogNum += 1;
@@ -64,6 +67,7 @@ public class DialogManager : MonoBehaviour
             else
             {
                 dialogPanel.SetActive(false);
+                dialogNum = 0;
             }
         }
         
