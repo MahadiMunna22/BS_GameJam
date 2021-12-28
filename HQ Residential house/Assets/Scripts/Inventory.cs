@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Inventory : MonoBehaviour
 {
@@ -9,10 +11,15 @@ public class Inventory : MonoBehaviour
     public delegate void OnItemChanged();
     public OnItemChanged OnItemChangedCallback;
 
-
-    float maxWeight = 50f;
-    float totalWeight = 0f;
+    public GameObject heavy;
+    public float maxWeight = 0f;
+    public float totalWeight = 0f;
     public float totalValue = 0f;
+    public bool canBepicked =true;
+     
+    public TMPro.TextMeshProUGUI valueText;
+    public TMPro.TextMeshProUGUI weightText;
+    public GameObject targetText;
     private void Awake()
     {
 
@@ -28,32 +35,62 @@ public class Inventory : MonoBehaviour
 
     public void Additems(GameObject item)
     {
-        if (totalWeight < maxWeight)
+        if (totalWeight + item.GetComponent<ItemsAttributes>().weight < 100)
         {
-
+            canBepicked = true;
             items.Add(item);
             totalWeight += item.GetComponent<ItemsAttributes>().weight;
             totalValue += item.GetComponent<ItemsAttributes>().value;
+
+            weightText.text = "Total weight : " + totalWeight + " Kg";
+            valueText.text = "Total value : " + totalValue + " $";
+            Debug.Log(totalWeight);
             if (OnItemChangedCallback != null)
             { 
                 OnItemChangedCallback.Invoke(); 
             }
         }
-        else
+        else  
         {
-            Debug.Log("Too heavy");
+            canBepicked = false;
+            Debug.Log(totalWeight + "Exceeded");
+            heavy.SetActive(true);
+           
+            StartCoroutine(ShowHeavy());
+
+          
+ 
         }
     }
 
+
+    public void setTarget()
+    {
+        targetText.SetActive(true);
+    }
+
+    IEnumerator ShowHeavy()
+    {
+        yield return new WaitForSeconds(5);
+        heavy.SetActive(false);
+
+    }
+
+
     public void Removeitems(GameObject item)
     {
-       
 
+        totalWeight -= item.GetComponent<ItemsAttributes>().weight;
+        totalValue -= item.GetComponent<ItemsAttributes>().value;
         items.Remove(item);
+
+        weightText.text = "Total weight : " + totalWeight + " Kg";
+        valueText.text = "Total value : " + totalValue + " $";
 
         if (OnItemChangedCallback != null)
         {
             OnItemChangedCallback.Invoke();
+
         }
     }
 }

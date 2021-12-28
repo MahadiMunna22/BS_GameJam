@@ -1,15 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class Detector : MonoBehaviour
 {
    
-    [SerializeField] GameObject Interact;
+    public GameObject Interactobj;
+    public GameObject Interacthuman;
+
     public GameObject panel; 
     public List<GameObject> dialogues;
     public List<string> dialogues1;
+    public LayerMask occlusionLayers;
+
+
+    bool isopen;
 
     int index = 0;
     GameObject interceptedObj;
@@ -25,78 +32,106 @@ public class Detector : MonoBehaviour
         //if (Interact == null) return;
         RaycastHit hit;
         Ray landingRay = new Ray(transform.position, transform.TransformDirection(Vector3.forward) * 3);
-        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 3, Color.red);
+        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 10, Color.red);
         if (Physics.Raycast(landingRay, out hit, 3))
         {
             //Debug.Log("asd");
 
-            if (hit.collider.tag == "Pickable")
-            {
 
-              
-                Interact.SetActive(true);
-                interceptedObj = hit.transform.gameObject;
-                interceptedObj.GetComponent<Outline>().enabled = true;
+          
 
-                if (Input.GetKeyDown(KeyCode.Q))
+
+           if (hit.collider.tag == "Pickable" )
                 {
-                     
-                
-                   Inventory.Instance.Additems(interceptedObj); 
-                   interceptedObj.SetActive(false);
-                 //Debug.Log(Inventory.Instance.items[0].GetComponent<ItemsAttributes>().weight);
-                   
+
+                Debug.Log("Interactive");
+                Interactobj.SetActive(true);
+                    interceptedObj = hit.transform.gameObject;
+                    interceptedObj.GetComponent<Outline>().enabled = true;
+
+                    if (Input.GetKeyDown(KeyCode.Q) )
+                    {
+
+
+                        Inventory.Instance.Additems(interceptedObj);
+
+                    if(Inventory.Instance.canBepicked)
+                        interceptedObj.SetActive(false);
+
+
+                       // Debug.Log(Inventory.Instance.totalWeight );
+
+
+                    }
+
+
 
                 }
 
+               
 
-
+                else
+                {
+                 
+                    Interactobj.SetActive(false);
+                }
             }
 
-            else if (hit.collider.tag == "PoorGuy")
-            {
-                 
 
-                Interact.SetActive(true);
+
+        RaycastHit hithuman;
+        Ray landingRayhuman = new Ray(transform.position, transform.TransformDirection(Vector3.forward) * 3);
+        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 10, Color.red);
+        if (Physics.Raycast(landingRay, out hithuman, 10))
+        {
+            //Debug.Log("asd");
+
+
+
+
+
+           
+
+            if (hithuman.collider.tag == "PoorGuy")
+            {
+
+
+                Interacthuman.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.Q))
                 {
-                   
+                    Inventory.Instance.setTarget();
                     panel.SetActive(true);
-                    dialogues[index].SetActive(true);
-                    
+                    dialogues[0].SetActive(true);
 
-                    if(Inventory.Instance.totalValue>0)
+
+                    if (Inventory.Instance.totalValue >= 2000)
                     {
                         dialogues[0].SetActive(false);
                         index = 1;
                         dialogues[index].SetActive(true);
                     }
-                 /*   panel.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text=dialogues1[0];
 
-                    if (Input.GetKeyDown(KeyCode.R))
-                    {
-                        panel.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = dialogues1[1];
-                    } 
-
-                    if (Input.GetKeyDown(KeyCode.G))
-                    {
-                        panel.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = dialogues1[2];
-                    }*/
                 }
 
-                
+
 
 
             }
 
             else
             {
-                dialogues[index].SetActive(false);
+                Debug.Log("not disappearing");
+                dialogues[0].SetActive(false);
                 panel.SetActive(false);
-                Interact.SetActive(false);
+                Interacthuman.SetActive(false);
             }
         }
+
+    }
         
+       void takeobject()
+    {
+
     }
 
 

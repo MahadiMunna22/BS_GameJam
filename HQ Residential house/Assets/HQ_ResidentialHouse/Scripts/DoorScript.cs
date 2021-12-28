@@ -79,7 +79,7 @@ public class DoorScript : MonoBehaviour {
 	public KeySystem keySystem = new KeySystem();
 
 	Transform player;
-	bool Opened = false;
+	public bool Opened = false;
 	bool inZone = false; 
 	Canvas TextObj;
 	Text theText;

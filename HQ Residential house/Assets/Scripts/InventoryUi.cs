@@ -16,7 +16,9 @@ public class InventoryUi : MonoBehaviour
     public GameObject bag;
     public GameObject player;
     public GameObject pauseMenu;
-    public GameObject exitPause;
+     
+    
+
 
 
     bool state;
@@ -41,6 +43,7 @@ public class InventoryUi : MonoBehaviour
             state = !state;
             bag.SetActive(state);
             cursorVisible = !cursorVisible;
+        
 
             //player.GetComponent<Rig>();
             //mLook.lockCursor = !mLook.lockCursor;
