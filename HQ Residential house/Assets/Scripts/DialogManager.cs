@@ -10,9 +10,9 @@ using UnityEngine.UI;
 public class DialogManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    public string[] dialogs = new string[]{"Hello brother, please help me", "That man living in that house took away my properties", "Now I have nothing and I am homeless", "I heard you help the homeless poor people", "So I called you", "Please help me"};
+    public string[] dialogs = new string[]{"Hello brother", "please help me", "That man living in that house took away my properties", "Now I have nothing and I am homeless", "I heard you help the homeless poor people", "So I called you", "Please help me"};
 
-    public string[] endDialogs = { "You are a hero", "That person deserved it and I can also start a new life from here", "Thank you so much" };
+    public string[] endDialogs = { "Hello brother", "You are a hero", "That person deserved it and I can also start a new life from here", "Thank you so much" };
 
     public TMPro.TextMeshProUGUI text; 
     public Button LoadNext;
@@ -20,6 +20,7 @@ public class DialogManager : MonoBehaviour
     private int endDialogNum = 0;
     public bool stealingDone;
     public GameObject dialogPanel;
+    public GameObject successfulPage;
     public GameObject initaialBorder;
     
     
@@ -62,7 +63,9 @@ public class DialogManager : MonoBehaviour
             else
             {
                 dialogPanel.SetActive(false);
+                successfulPage.SetActive(true);
                 endDialogNum = 0;
+                text.text = "";
             }
         }
         else
@@ -75,9 +78,10 @@ public class DialogManager : MonoBehaviour
             }
             else
             {
-                initaialBorder.SetActive(false);    
+                initaialBorder.SetActive(false);
                 dialogPanel.SetActive(false);
                 dialogNum = 0;
+                text.text = "";
             }
         }
         
