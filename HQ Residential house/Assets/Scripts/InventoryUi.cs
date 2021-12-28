@@ -15,7 +15,7 @@ public class InventoryUi : MonoBehaviour
 
     public GameObject bag;
     public GameObject player;
-    public GameObject pauseMenu;
+    
      
     
 
@@ -52,11 +52,7 @@ public class InventoryUi : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             cursorVisiblePause = !cursorVisiblePause;
-            pauseState = !pauseState;
-            if(pauseState)
-                pauseMenu.SetActive(true);
-            else
-                pauseMenu.SetActive(false);
+           
         }
 
 
@@ -69,7 +65,7 @@ public class InventoryUi : MonoBehaviour
 
     public void pauseExit()
     {
-        pauseMenu.SetActive(false);
+         
         cursorVisiblePause = false;
         pauseState = false;
     }

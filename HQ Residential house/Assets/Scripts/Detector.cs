@@ -9,11 +9,13 @@ public class Detector : MonoBehaviour
    
     public GameObject Interactobj;
     public GameObject Interacthuman;
+    public GameObject gameOverScreen;
 
     public GameObject panel; 
     public List<GameObject> dialogues;
     public List<string> dialogues1;
     public LayerMask occlusionLayers;
+
 
 
     bool isopen;
@@ -26,9 +28,17 @@ public class Detector : MonoBehaviour
         
     }
 
+  
+
     // Update is called once per frame
     void Update()
     {
+
+        if(Inventory.Instance.isGameOver)
+        {
+            Inventory.Instance.GameOver();
+            gameOverScreen.SetActive(true);
+        }
         //if (Interact == null) return;
         RaycastHit hit;
         Ray landingRay = new Ray(transform.position, transform.TransformDirection(Vector3.forward) * 3);

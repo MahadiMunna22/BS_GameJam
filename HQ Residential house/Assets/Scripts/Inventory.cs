@@ -33,8 +33,11 @@ public class Inventory : MonoBehaviour
     }
 
     public List<GameObject> items;
-    
-   
+
+    public void GameOver()
+    {
+        //Time.timeScale = 0.0f;
+    }
 
     public void Additems(GameObject item)
     {

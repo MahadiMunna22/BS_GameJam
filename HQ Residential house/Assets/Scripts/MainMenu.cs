@@ -6,9 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public GameObject menu;
     public void PlayGame(){
-        SceneManager.LoadScene(1);
-    }
+        /* SceneManager.LoadScene(1);*/
+         Cursor.lockState = CursorLockMode.Locked;
+         Cursor.visible = false;
+         menu.SetActive(false);
+        
+}
 
     public void QuitGame(){
         Application.Quit();
