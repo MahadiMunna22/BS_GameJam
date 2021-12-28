@@ -24,9 +24,9 @@ public class Detector : MonoBehaviour
     {
         //if (Interact == null) return;
         RaycastHit hit;
-        Ray landingRay = new Ray(transform.position, transform.TransformDirection(Vector3.forward) * 10);
-        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 10, Color.red);
-        if (Physics.Raycast(landingRay, out hit, 1000))
+        Ray landingRay = new Ray(transform.position, transform.TransformDirection(Vector3.forward) * 3);
+        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 3, Color.red);
+        if (Physics.Raycast(landingRay, out hit, 3))
         {
             //Debug.Log("asd");
 
