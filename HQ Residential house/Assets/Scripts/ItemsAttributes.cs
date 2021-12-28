@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemsAttributes : MonoBehaviour
 {
-    public float weight;
+    public float  weight;
     public float value;
     public Sprite icon;
 
