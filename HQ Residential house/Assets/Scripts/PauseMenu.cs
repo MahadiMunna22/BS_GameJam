@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
+    public static Inventory Instance;
 
 }
