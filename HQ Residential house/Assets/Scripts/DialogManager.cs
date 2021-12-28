@@ -10,7 +10,7 @@ using UnityEngine.UI;
 public class DialogManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    public string[] dialogs = new string[]{"Hello brother", "please help me", "That man living in that house took away my properties", "Now I have nothing and I am homeless", "I heard you help the homeless poor people", "So I called you", "Please help me"};
+    public string[] dialogs = new string[]{"Hello brother", "Please help me", "That man living in that house took away my properties", "Now I have nothing and I am homeless", "I heard you help the homeless poor people", "So I called you", "Please help me"};
 
     public string[] endDialogs = { "Hello brother", "You are a hero", "That person deserved it and I can also start a new life from here", "Thank you so much" };
 
@@ -22,10 +22,11 @@ public class DialogManager : MonoBehaviour
     public GameObject dialogPanel;
     public GameObject successfulPage;
     public GameObject initaialBorder;
-    
-    
+    public GameObject Instruction;
 
-    
+
+
+
 
     private void Start()
     {
@@ -38,16 +39,10 @@ public class DialogManager : MonoBehaviour
         else
         {   
             text.text = dialogs[dialogNum];
-         
         }
 
         Button btn = LoadNext.GetComponent<Button>();
         btn.onClick.AddListener(LoadNextDialog);
-    }
-    private void Update()
-    {
-        
-        
     }
 
     public void LoadNextDialog()
@@ -65,7 +60,6 @@ public class DialogManager : MonoBehaviour
                 dialogPanel.SetActive(false);
                 successfulPage.SetActive(true);
                 endDialogNum = 0;
-                text.text = "";
             }
         }
         else
@@ -80,8 +74,8 @@ public class DialogManager : MonoBehaviour
             {
                 initaialBorder.SetActive(false);
                 dialogPanel.SetActive(false);
+                Instruction.SetActive(false);
                 dialogNum = 0;
-                text.text = "";
             }
         }
         
